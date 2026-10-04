@@ -1,0 +1,11 @@
+{
+  "name": "rainy-stay",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check app.js && node --check audio.js && node --check scenes.js && node --check assets/scene-masks.js",
+    "test": "node tests/scene-test.mjs && node tests/audio-test.mjs && node tests/app-test.mjs",
+    "dev": "python3 -m http.server 4173"
+  }
+}

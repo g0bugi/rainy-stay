@@ -1,1 +1,60 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#17100b"><title>Rainy Stay</title><link rel="stylesheet" href="/style.css"></head><body><main id="room" data-scene="bed"><div class="photo"></div><div class="transition"></div><button class="hotspot hs-window" data-hotspot="window" aria-label="창가로 이동"></button><button class="hotspot hs-sofa" data-hotspot="sofa" aria-label="소파로 이동"></button><button class="hotspot hs-table" data-hotspot="table" aria-label="테이블로 이동"></button><div class="rain"></div><div class="vignette"></div><header><div><strong>Rainy Stay</strong><span>비가 오는 날, 어디에도 가지 않아도 좋은 곳</span></div><div class="weather"><b id="clock">02:56</b><span>18°C · 비</span></div></header><section class="mood"><span class="cloud">☁︎</span><div><b>지금은, 비가 오는 밤이에요.</b><p id="desc">창밖을 바라보며, 천천히 쉬어가요.</p></div></section><nav class="places"><button data-go="bed" class="active"><i>▱</i><span><b>침대</b><small>이불 속에서</small></span></button><button data-go="window"><i>▦</i><span><b>창가</b><small>비를 바라보며</small></span></button><button data-go="sofa"><i>▰</i><span><b>소파</b><small>따뜻하게</small></span></button><button data-go="table"><i>◰</i><span><b>테이블</b><small>차 한 잔</small></span></button></nav><section class="actions"><button id="primary">이불 더 덮기</button><button id="light">조명 낮추기</button><button id="sound">빗소리 켜기</button><button id="tvSound">TV 소리</button></section><div class="player"><span>♫</span><div><b>Night Rain</b><small>Rainy Stay</small></div><button id="play">Ⅱ</button><div class="bar"><i></i></div></div><p class="goodnight">오늘도, 잘 쉬었으면 좋겠어요.</p><div class="steam"></div><div class="curtain"></div><div class="breath"></div><div class="tvglow"></div><div class="blanket"></div><div id="caption" class="scene-caption"></div><button id="zen" class="zen">휴식 모드</button></main><script src="/app.js"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#1b201d">
+  <meta name="description" content="비 오는 숲속의 작은 숙소. 침대, 창가, 소파와 차 한 잔 사이에서 천천히 쉬어가세요.">
+  <title>Rainy Stay · 비 오는 날의 쉼</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preload" as="image" href="./assets/bed.webp">
+</head>
+<body>
+  <main id="stay" data-scene="bed" aria-label="비 오는 숲속 숙소">
+    <div id="world" aria-label="숙소 풍경. 좌우로 밀어 둘러볼 수 있어요.">
+      <div class="scene-layer" id="scene-a"><img class="scene-image" alt="" draggable="false"><canvas class="atmosphere" aria-hidden="true"></canvas><div class="object-layer"></div></div>
+      <div class="scene-layer" id="scene-b" aria-hidden="true"><img class="scene-image" alt="" draggable="false"><canvas class="atmosphere" aria-hidden="true"></canvas><div class="object-layer"></div></div>
+      <div class="ambient-shade" aria-hidden="true"></div>
+      <div class="edge-shade" aria-hidden="true"></div>
+    </div>
+    <header class="topbar chrome">
+      <a class="wordmark" href="#bed" aria-label="Rainy Stay, 침대로">rainy stay<span>FOREST ROOM · 01</span></a>
+      <div class="top-actions">
+        <button id="rest" class="quiet-button" aria-pressed="false" aria-label="그냥 쉬기, 휴식 모드"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.4 15.6A8 8 0 0 1 8.4 4.6a8 8 0 1 0 11 11Z"/></svg><span>그냥 쉬기</span></button>
+        <button id="settings" class="icon-button" aria-label="소리와 분위기 조절" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16M12 4v16M19 4v16M2 9h6M9 15h6M16 7h6"/></svg></button>
+      </div>
+    </header>
+    <div id="loading" class="loading" role="status"><span class="loading-mark"></span><p>비 오는 방을 준비하고 있어요</p></div>
+    <div id="load-error" class="load-error" hidden><p>방을 불러오지 못했어요.</p><button id="retry">다시 열기</button></div>
+    <aside class="arrival chrome" id="arrival"><span>오늘은, 서두르지 않아도 돼요.</span><button id="arrival-close" aria-label="안내 닫기">×</button></aside>
+    <div class="view-info chrome"><p id="scene-eyebrow">01 / 04 · 이불 속에서</p><h1 id="scene-title">비가 머무는 침대</h1><p id="scene-description">아무것도 하지 않아도 괜찮은 밤.</p></div>
+    <div class="interaction-bar chrome"><button id="primary" class="action-button"><span class="action-dot"></span><span id="primary-label">이불 덮기</span></button><button id="light" class="icon-button" aria-label="조명 낮추기" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M8 14a6 6 0 1 1 8 0c-1 .8-1 2-1 2H9s0-1.2-1-2Z"/></svg></button></div>
+    <footer class="bottom-bar chrome">
+      <nav class="places" aria-label="방 안의 자리">
+        <button data-go="bed" aria-current="location"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V8M21 18V8M3 14h18M6 14V6h12v8M7 10h10M3 18v3M21 18v3"/></svg><span>침대</span></button>
+        <button data-go="window"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16v18H4zM12 3v18M4 12h16"/></svg><span>창가</span></button>
+        <button data-go="sofa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12V7c0-2 2-3 6-3s6 1 6 3v5M3 11h3v5h12v-5h3v9H3zM6 20v2M18 20v2"/></svg><span>소파</span></button>
+        <button data-go="table"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5ZM17 10h2a3 3 0 0 1 0 6h-3M3 22h17M8 3v3M12 2v3"/></svg><span>차 한 잔</span></button>
+      </nav>
+      <button id="sound" class="sound-button" aria-pressed="false"><span class="sound-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="sound-label">소리 켜기</span></button>
+    </footer>
+    <button id="wake" class="wake-button" hidden aria-label="휴식 모드 끝내고 메뉴 보기">메뉴 보기 <span>↗</span></button>
+    <p id="caption" class="caption" role="status" aria-live="polite"></p>
+    <p class="sr-only" id="keyboard-help">왼쪽, 오른쪽 화살표로 자리를 옮기고 Escape 키로 휴식 모드를 끝낼 수 있어요. 풍경을 좌우로 밀어 둘러보세요.</p>
+    <dialog id="sound-settings" aria-labelledby="settings-title">
+      <form method="dialog"><button class="icon-button close-dialog" aria-label="설정 닫기">×</button></form>
+      <p class="eyebrow">MAKE YOURSELF AT HOME</p><h2 id="settings-title">나만의 고요함</h2>
+      <p class="panel-description">자리를 옮기면 소리의 거리와 방향도 달라져요.</p>
+      <label class="slider-label" for="rain-volume"><span>창밖의 비</span><output id="rain-value">75%</output></label><input id="rain-volume" type="range" min="0" max="100" value="75">
+      <label class="slider-label" for="tv-volume"><span>TV의 잔잔한 음악</span><output id="tv-value">35%</output></label><input id="tv-volume" type="range" min="0" max="100" value="35">
+      <label class="slider-label" for="master-volume"><span>전체 소리</span><output id="master-value">65%</output></label><input id="master-volume" type="range" min="0" max="100" value="65">
+      <div class="setting-row"><span>TV 화면</span><button id="tv-toggle" class="toggle" aria-pressed="true" aria-label="TV 끄기"><span></span></button></div>
+      <p id="audio-detail" class="audio-detail">소리를 켜면 빗소리가 시작돼요.</p>
+      <button id="panel-sound" class="panel-sound">소리 켜기</button>
+      <p class="panel-footnote">헤드폰으로 들으면 공간감이 더 깊어져요.<br>이 방의 비와 음악은 직접 만든 사운드예요.</p>
+    </dialog>
+    <noscript><div class="noscript">이 방을 둘러보려면 JavaScript가 필요해요.</div></noscript>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

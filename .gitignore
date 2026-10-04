@@ -1,0 +1,7 @@
+# Local-only source originals and validation evidence; production uses WebP.
+assets/originals/
+qa/
+node_modules/
+.DS_Store
+assets/bed-pov*
+assets/build_scene_metadata.py

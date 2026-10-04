@@ -1,0 +1,69 @@
+{
+  "generationMethod": "OpenAI built-in image_gen.imagegen",
+  "mode": "built-in, no API fallback",
+  "createdUTC": "2026-10-04",
+  "resolution": [
+    1448,
+    1086
+  ],
+  "sourceMaterial": "All assets generated from prompts. bed.png is the master reference. No third-party photos or footage.",
+  "referenceStrategy": "Original master room referenced by four distinct camera views. Final bed is a true reclining pillow-height viewpoint; bed-covered is its fixed-camera raised-duvet edit.",
+  "files": [
+    {
+      "name": "bed",
+      "original": "originals/bed-pov.png",
+      "web": "bed.webp",
+      "width": 1448,
+      "height": 1086,
+      "webpBytes": 259168,
+      "encoding": "Pillow WebP quality=88 method=6, no crop/no resize",
+      "promptFile": "prompts.json",
+      "referenceImage": "originals/bed.png"
+    },
+    {
+      "name": "window",
+      "original": "originals/window.png",
+      "web": "window.webp",
+      "width": 1448,
+      "height": 1086,
+      "webpBytes": 306230,
+      "encoding": "Pillow WebP quality=88 method=6, no crop/no resize",
+      "promptFile": "prompts.json",
+      "referenceImage": "originals/bed.png"
+    },
+    {
+      "name": "sofa",
+      "original": "originals/sofa.png",
+      "web": "sofa.webp",
+      "width": 1448,
+      "height": 1086,
+      "webpBytes": 274312,
+      "encoding": "Pillow WebP quality=88 method=6, no crop/no resize",
+      "promptFile": "prompts.json",
+      "referenceImage": "originals/bed.png"
+    },
+    {
+      "name": "table",
+      "original": "originals/table.png",
+      "web": "table.webp",
+      "width": 1448,
+      "height": 1086,
+      "webpBytes": 240818,
+      "encoding": "Pillow WebP quality=88 method=6, no crop/no resize",
+      "promptFile": "prompts.json",
+      "referenceImage": "originals/bed.png"
+    },
+    {
+      "name": "bed-covered",
+      "original": "originals/bed-pov-covered.png",
+      "web": "bed-covered.webp",
+      "width": 1448,
+      "height": 1086,
+      "webpBytes": 232458,
+      "encoding": "Pillow WebP quality=88 method=6, no crop/no resize",
+      "promptFile": "prompts.json",
+      "referenceImage": "originals/bed-pov.png"
+    }
+  ],
+  "originalsNote": "High-resolution PNG originals are retained in local staging and excluded from the production repository. All production WebPs and prompts are included."
+}
